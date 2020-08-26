@@ -64,17 +64,10 @@ class App extends Component {
 
       };
 
-
-    return (
-      <div className="App">
-        <h1>Hi im a react app wowo </h1>
-        <p>this is really working !!</p>
-        <button 
-        style = {style} 
-        onClick={this.togglePersonsHandler}>Toggle Persons</button>
-
-{ this.state.showPersons ?
-        <div>
+let personsOutput = null;
+if(this.state.showPersons){
+  personsOutput = (
+    <div>
         <PersonComp 
         name={this.state.persons[0].name} age={this.state.persons[0].age}   />
         <PersonComp name={this.state.persons[1].name} 
@@ -86,8 +79,19 @@ class App extends Component {
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age}/>
         </div>
-    : null
-  }
+  );
+}
+
+
+
+    return (
+      <div className="App">
+        <h1>Hi im a react app wowo </h1>
+        <p>this is really working !!</p>
+        <button 
+        style = {style} 
+        onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {personsOutput}
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hello im a react app'));
