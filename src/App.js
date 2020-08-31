@@ -64,20 +64,33 @@ class App extends Component {
 
       };
 
-let personsOutput = null;
-if(this.state.showPersons){
-  personsOutput = (
-    <div>
+
+      /*<PersonComp 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age}   />
         <PersonComp 
-        name={this.state.persons[0].name} age={this.state.persons[0].age}   />
-        <PersonComp name={this.state.persons[1].name} 
+        name={this.state.persons[1].name} 
         age={this.state.persons[1].age}
         click={this.switchNameHandler.bind(this,"Alessssandro")}
         changed={this.nameChangedHandler}
         >My hobbies are: board games</PersonComp>
         <PersonComp 
         name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>
+        age={this.state.persons[2].age}/>*/
+
+let personsOutput = null;
+if(this.state.showPersons){
+  personsOutput = (
+    <div>
+      {this.state.persons.map(p => {
+        return (<PersonComp
+        name = {p.name}
+        age={p.age}
+        changed={this.nameChangedHandler}
+        />)
+      }
+      )}
+        
         </div>
   );
 }
