@@ -16,15 +16,24 @@ class App extends Component {
 
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        {name:newName, age:24},
-        {name:'Daniel' ,age:28},
-        {name:'Savino ', age:20} ]
-    
-    
-    });
+  deletePersonHandler = (personIndex) => {
+    // make copy of persons array
+    // not actaully a copy its a reference therefore not a realcopy and bad practice 
+   // const personArrCopy = this.state.persons;
+
+   //A) use slice with no arguments 
+   //const personArrCopy = this.state.persons.slice();
+   const personArrCopy = [...this.state.persons];
+   //B) use spread operator ...
+
+
+    //remove element assiaoted with index recieved 
+    personArrCopy.splice(personIndex,1);
+
+    this.setState({persons: personArrCopy});
+
+
+
 
   }
 
@@ -82,11 +91,11 @@ let personsOutput = null;
 if(this.state.showPersons){
   personsOutput = (
     <div>
-      {this.state.persons.map(p => {
+      {this.state.persons.map( (p,index) => {
         return (<PersonComp
         name = {p.name}
         age={p.age}
-        changed={this.nameChangedHandler}
+        click = {() => this.deletePersonHandler(index)}
         />)
       }
       )}
