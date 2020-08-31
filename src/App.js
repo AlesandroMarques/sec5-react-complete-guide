@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import PersonComp from './Person/Person'
+import person from './Person/Person';
 
 class App extends Component {
 
   state = {
     persons: [
-    {name:'Ale', age:24},
-    {name:'Daniel' ,age:28},
-    {name:'Savino ', age:19} ],
+    {id:'a1',name:'Ale', age:24},
+    {id:'a2',name:'Daniel' ,age:28},
+    {id:'a3',name:'Savino ', age:19} ],
 
     othgerState:'some other value', 
 
@@ -23,8 +24,9 @@ class App extends Component {
 
    //A) use slice with no arguments 
    //const personArrCopy = this.state.persons.slice();
-   const personArrCopy = [...this.state.persons];
    //B) use spread operator ...
+   const personArrCopy = [...this.state.persons];
+   
 
 
     //remove element assiaoted with index recieved 
@@ -37,15 +39,34 @@ class App extends Component {
 
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        {name:"Ale", age:24},
-        {name: event.target.value ,age:28},
-        {name:'Savino ', age:20} ]
-    
-    
+  nameChangedHandler = (event, elementId) => {
+    const personToChangeIndex = this.state.persons.findIndex(p => {
+      return p.id === elementId;
     });
+
+
+    //this retirns a pointer to original object therfore not best practice 
+   // const personToChange = this.state.persons[personToChangeIndex];
+
+   //spreads the this.state.persons[index ] into its elements (is, name , age)
+   //the the { } wrapper puts it into an object 
+
+   const personToChangeObj = {...this.state.persons[personToChangeIndex]};
+
+   personToChangeObj.name = event.target.value;
+
+
+   //make copy of persons array 
+   const personArrCopy = [...this.state.persons];
+   //update 
+   personArrCopy[personToChangeIndex] = personToChangeObj;
+   
+
+    this.setState({
+      persons: personArrCopy
+
+    }
+    );
 
   }
 
@@ -96,6 +117,10 @@ if(this.state.showPersons){
         name = {p.name}
         age={p.age}
         click = {() => this.deletePersonHandler(index)}
+        // also works 
+       // click = {this.deletePersonHandler.bind(this,index)}
+       changed={(event) => this.nameChangedHandler(event,p.id)}
+        key = {p.id}
         />)
       }
       )}
