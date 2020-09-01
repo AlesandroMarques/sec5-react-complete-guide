@@ -154,9 +154,9 @@ if(this.state.persons.length < 2 ){pCssClasses.push(appClasses.bold);}
       <div className={appClasses.App}>
         <h1>Hi im a react app wowo </h1>
         <p className = {pCssClasses.join(' ')}>this is really working !!</p>
-        <StyledButton
+        <button className = {appClasses.Button}
         changeColors = {this.state.showPersons}
-        onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
+        onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {personsOutput}
       </div>
     );

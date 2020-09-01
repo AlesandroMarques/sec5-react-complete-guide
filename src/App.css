@@ -10,3 +10,21 @@ color: red;
 font-weight: bold;
 
 }
+
+.Button{
+  background-color:green;
+  color: white;
+  font: inherit;
+  border: 2px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+}
+  
+.Button.hover{
+    background-color: lightgreen;
+    color: black;
+  
+  }
+
+
