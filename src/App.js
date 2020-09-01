@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 import './App.css';
 import PersonComp from './Person/Person'
-import person from './Person/Person';
+
+
+
+
+const StyledButton = styled.button`
+background-color: ${props => props.changeColors ? 'red' : 'green'};
+color: white;
+font: inherit;
+border: 2px solid blue;
+padding: 8px;
+cursor: pointer;
+
+&:hover{
+  background-color: ${props => props.changeColors ? 'salmon' : 'lightgreen'};
+  color: black;
+
+}
+`;
+
 
 class App extends Component {
 
@@ -91,7 +110,8 @@ class App extends Component {
         font: 'inherit',
         border:'2px solid blue',
         padding: '8px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        
 
       };
 
@@ -134,9 +154,9 @@ if(this.state.persons.length < 2 ){pCssClasses.push('bold');}
       <div className="App">
         <h1>Hi im a react app wowo </h1>
         <p className = {pCssClasses.join(' ')}>this is really working !!</p>
-        <button 
-        style = {style} 
-        onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <StyledButton
+        changeColors = {this.state.showPersons}
+        onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
         {personsOutput}
       </div>
     );
