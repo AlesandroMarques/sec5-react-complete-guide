@@ -86,7 +86,8 @@ class App extends Component {
   render() {
     // inline style exmaple , must wrap all values in quotes
       const style = {
-        backgroundColor: 'white',
+        backgroundColor: 'green',
+        color: 'white',
         font: 'inherit',
         border:'2px solid blue',
         padding: '8px',
@@ -95,18 +96,6 @@ class App extends Component {
       };
 
 
-      /*<PersonComp 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age}   />
-        <PersonComp 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        click={this.switchNameHandler.bind(this,"Alessssandro")}
-        changed={this.nameChangedHandler}
-        >My hobbies are: board games</PersonComp>
-        <PersonComp 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>*/
 
 let personsOutput = null;
 if(this.state.showPersons){
@@ -127,6 +116,9 @@ if(this.state.showPersons){
         
         </div>
   );
+
+  style.backgroundColor = 'red';
+  style.color = 'black';
 }
 
 
