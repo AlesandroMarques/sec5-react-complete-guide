@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import './App.css';
+import appClasses from'./App.css';
 import PersonComp from './Person/Person'
 
 
@@ -146,12 +146,12 @@ if(this.state.showPersons){
 
 // "red bold "
 let pCssClasses = [];
-if(this.state.persons.length < 3 ){pCssClasses.push('red');}
-if(this.state.persons.length < 2 ){pCssClasses.push('bold');}
+if(this.state.persons.length < 3 ){pCssClasses.push(appClasses.red);}
+if(this.state.persons.length < 2 ){pCssClasses.push(appClasses.bold);}
 
 
     return (
-      <div className="App">
+      <div className={appClasses.App}>
         <h1>Hi im a react app wowo </h1>
         <p className = {pCssClasses.join(' ')}>this is really working !!</p>
         <StyledButton
