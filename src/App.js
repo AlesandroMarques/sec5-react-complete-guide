@@ -103,19 +103,8 @@ class App extends Component {
 
 
   render() {
-    // inline style exmaple , must wrap all values in quotes
-      const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border:'2px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-        
 
-      };
-
-
+    let btnClass = [appClasses.Button];
 
 let personsOutput = null;
 if(this.state.showPersons){
@@ -137,10 +126,8 @@ if(this.state.showPersons){
         </div>
   );
 
+      btnClass.push(appClasses.Red);
 
-//dynalically change insline style 
-  style.backgroundColor = 'red';
-  style.color = 'black';
 }
 
 
@@ -154,8 +141,7 @@ if(this.state.persons.length < 2 ){pCssClasses.push(appClasses.bold);}
       <div className={appClasses.App}>
         <h1>Hi im a react app wowo </h1>
         <p className = {pCssClasses.join(' ')}>this is really working !!</p>
-        <button className = {appClasses.Button}
-        changeColors = {this.state.showPersons}
+        <button className = {btnClass.join(' ')}
         onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {personsOutput}
       </div>
