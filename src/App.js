@@ -117,16 +117,23 @@ if(this.state.showPersons){
         </div>
   );
 
+
+//dynalically change insline style 
   style.backgroundColor = 'red';
   style.color = 'black';
 }
 
 
+// "red bold "
+let pCssClasses = [];
+if(this.state.persons.length < 3 ){pCssClasses.push('red');}
+if(this.state.persons.length < 2 ){pCssClasses.push('bold');}
+
 
     return (
       <div className="App">
         <h1>Hi im a react app wowo </h1>
-        <p>this is really working !!</p>
+        <p className = {pCssClasses.join(' ')}>this is really working !!</p>
         <button 
         style = {style} 
         onClick={this.togglePersonsHandler}>Toggle Persons</button>
