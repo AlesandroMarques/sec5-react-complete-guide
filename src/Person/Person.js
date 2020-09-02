@@ -21,6 +21,10 @@ text-align: center;
 `
 
 const person = (props) => {
+    const rnd = Math.random();
+    if(rnd > .7){ throw new Error('Something went wrong')}
+
+
 return ( 
 
 //<StyledDiv>

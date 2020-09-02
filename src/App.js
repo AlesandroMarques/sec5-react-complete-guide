@@ -60,7 +60,10 @@ class App extends Component {
 
   nameChangedHandler = (event, elementId) => {
     const personToChangeIndex = this.state.persons.findIndex(p => {
-      return p.id === elementId;
+
+     // return p.id === elementId;
+     // person has no userID 
+     return p.id === elementId;
     });
 
 
@@ -72,7 +75,8 @@ class App extends Component {
 
    const personToChangeObj = {...this.state.persons[personToChangeIndex]};
 
-   personToChangeObj.name = event.target.value;
+  
+  personToChangeObj.name = event.target.value;
 
 
    //make copy of persons array 
