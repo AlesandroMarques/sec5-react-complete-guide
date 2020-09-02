@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import appClasses from'./App.css';
 import PersonComp from './Person/Person'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
 
@@ -115,15 +116,19 @@ if(this.state.showPersons){
   personsOutput = (
     <div>
       {this.state.persons.map( (p,index) => {
-        return (<PersonComp
+        return (
+        <ErrorBoundary key = {p.id}>
+        <PersonComp
         name = {p.name}
         age={p.age}
         click = {() => this.deletePersonHandler(index)}
         // also works 
        // click = {this.deletePersonHandler.bind(this,index)}
        changed={(event) => this.nameChangedHandler(event,p.id)}
-        key = {p.id}
-        />)
+        
+        />
+        </ErrorBoundary>
+        )
       }
       )}
         
