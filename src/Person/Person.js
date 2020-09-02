@@ -1,7 +1,7 @@
 // ES6 create funtion without using function keyword 
 import React from 'react';
 import styled from 'styled-components'
-//import './Person.css';
+import personClasses from './Person.css';
 
 //const StyledDiv = props => styled.div`
 // create react componoent to hold this styled div 
@@ -22,13 +22,15 @@ text-align: center;
 
 const person = (props) => {
 return ( 
-//<div className="Person">
-<StyledDiv>
+
+//<StyledDiv>
+<div className={personClasses.Person}>
 <p onClick={props.click}>i am {props.name} and i am {props.age} years old </p>
 <p> {props.children}</p>
 <input type="text" onChange={props.changed}  value={props.name}/>
-</StyledDiv>
-//</div>
+
+</div>
+//</StyledDiv>
     );
 
 
